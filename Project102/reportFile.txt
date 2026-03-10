@@ -1,0 +1,3 @@
+- FILE REPORT -
+Seagate Barracuda 2TB | Capacity: 2TB | Speed : 7200 RPM | Cache : 256MB | Interface : SATA III 6Gb / s
+
