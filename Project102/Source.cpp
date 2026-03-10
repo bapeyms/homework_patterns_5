@@ -106,6 +106,5 @@ int main()
 	Client(device, report);
 	delete device;
 	delete report;
-
 	return 0;
 }
