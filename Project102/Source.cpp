@@ -19,7 +19,7 @@ class VideoCard : public iDevice
 public:
 	VideoCard()
 	{
-		description = "RX 7800 XT | VRAM: 16GB GDDR6 | Core Clock : 2124 MHz | Boost : 2430 MHz | Memory Bus : 256 - bit";
+		description = "Video Card: RX 7800 XT | VRAM: 16GB GDDR6 | Core Clock : 2124 MHz | Boost : 2430 MHz | Memory Bus : 256 - bit";
 	}
 };
 class CPU : public iDevice
@@ -27,7 +27,7 @@ class CPU : public iDevice
 public:
 	CPU()
 	{
-		description = "Ryzen 7 7700X | Cores: 8 | Threads : 16 | Base Clock : 4.5 GHz | Boost Clock : 5.4 GHz | Cache : 40MB";
+		description = "CPU: Ryzen 7 7700X | Cores: 8 | Threads : 16 | Base Clock : 4.5 GHz | Boost Clock : 5.4 GHz | Cache : 40MB";
 	}
 };
 class HDD : public iDevice
@@ -35,7 +35,15 @@ class HDD : public iDevice
 public:
 	HDD()
 	{
-		description = "Seagate Barracuda 2TB | Capacity: 2TB | Speed : 7200 RPM | Cache : 256MB | Interface : SATA III 6Gb / s";
+		description = "HDD: Seagate Barracuda 2TB | Capacity: 2TB | Speed : 7200 RPM | Cache : 256MB | Interface : SATA III 6Gb / s";
+	}
+};
+class RAM : public iDevice
+{
+public:
+	RAM()
+	{
+		description = "RAM: Corsair Vengeance LPX | Capacity : 16GB | Type : DDR4 | Speed : 3200 MHz | Timings : CL16";
 	}
 };
 
@@ -71,13 +79,13 @@ public:
 	void showReport() override
 	{
 		cout << "- FILE REPORT - " << endl;
-		ofstream file("reportFile.txt", ios::trunc);
+		ofstream file("reportFile.txt", ios::app);
 		if (file.is_open())
 		{
 			file << "- FILE REPORT -" << endl;
 			file << device->getDescription() << endl << endl;
 			file.close();
-			cout << "The report is written to a file" << endl;
+			cout << "The report is written to a file" << endl << endl;
 		}
 		else
 		{
@@ -105,6 +113,11 @@ int main()
 	report = new FileReport();
 	Client(device, report);
 	delete device;
+
+	device = new RAM();
+	Client(device, report);
+	delete device;
 	delete report;
+
 	return 0;
 }
